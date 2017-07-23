@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08D82EEA1DDC75D55DB9D1F9 /* Pods_Cal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE248B677DD7408BF7CB1CCC /* Pods_Cal.framework */; };
 		35970D851F1F3929009858FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35970D841F1F3929009858FF /* AppDelegate.swift */; };
 		35970D871F1F3929009858FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35970D861F1F3929009858FF /* ViewController.swift */; };
 		35970D8A1F1F3929009858FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35970D881F1F3929009858FF /* Main.storyboard */; };
@@ -14,6 +15,8 @@
 		35970D8F1F1F3929009858FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35970D8D1F1F3929009858FF /* LaunchScreen.storyboard */; };
 		35970D9A1F1F3929009858FF /* CalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35970D991F1F3929009858FF /* CalTests.swift */; };
 		35970DA51F1F3929009858FF /* CalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35970DA41F1F3929009858FF /* CalUITests.swift */; };
+		35E56AB91F20FEFB00635086 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E56AB81F20FEFB00635086 /* CalendarCell.swift */; };
+		35E56ABD1F21428500635086 /* Events.db in Resources */ = {isa = PBXBuildFile; fileRef = 35E56ABC1F21428500635086 /* Events.db */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,11 @@
 		35970DA01F1F3929009858FF /* CalUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		35970DA41F1F3929009858FF /* CalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalUITests.swift; sourceTree = "<group>"; };
 		35970DA61F1F3929009858FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		35E56AB81F20FEFB00635086 /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		35E56ABC1F21428500635086 /* Events.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Events.db; sourceTree = "<group>"; };
+		D43D8DC816895AED0016A8FE /* Pods-Cal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cal.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cal/Pods-Cal.release.xcconfig"; sourceTree = "<group>"; };
+		DE248B677DD7408BF7CB1CCC /* Pods_Cal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5AC0F38603E11983A966D30 /* Pods-Cal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cal/Pods-Cal.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08D82EEA1DDC75D55DB9D1F9 /* Pods_Cal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +90,8 @@
 				35970D981F1F3929009858FF /* CalTests */,
 				35970DA31F1F3929009858FF /* CalUITests */,
 				35970D821F1F3929009858FF /* Products */,
+				6DF00CE983EB7944D261D20C /* Pods */,
+				B247DA822FD8793D6A742E09 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,6 +114,8 @@
 				35970D8B1F1F3929009858FF /* Assets.xcassets */,
 				35970D8D1F1F3929009858FF /* LaunchScreen.storyboard */,
 				35970D901F1F3929009858FF /* Info.plist */,
+				35E56AB81F20FEFB00635086 /* CalendarCell.swift */,
+				35E56ABC1F21428500635086 /* Events.db */,
 			);
 			path = Cal;
 			sourceTree = "<group>";
@@ -125,6 +138,23 @@
 			path = CalUITests;
 			sourceTree = "<group>";
 		};
+		6DF00CE983EB7944D261D20C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E5AC0F38603E11983A966D30 /* Pods-Cal.debug.xcconfig */,
+				D43D8DC816895AED0016A8FE /* Pods-Cal.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B247DA822FD8793D6A742E09 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DE248B677DD7408BF7CB1CCC /* Pods_Cal.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +162,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 35970DA91F1F3929009858FF /* Build configuration list for PBXNativeTarget "Cal" */;
 			buildPhases = (
+				3F74742F2D131B35D65E1781 /* [CP] Check Pods Manifest.lock */,
 				35970D7D1F1F3929009858FF /* Sources */,
 				35970D7E1F1F3929009858FF /* Frameworks */,
 				35970D7F1F1F3929009858FF /* Resources */,
+				187FAC5DF578373B2F3A61E0 /* [CP] Embed Pods Frameworks */,
+				ECB73F65AB48CE7BFA4C864C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -237,6 +270,7 @@
 			files = (
 				35970D8F1F1F3929009858FF /* LaunchScreen.storyboard in Resources */,
 				35970D8C1F1F3929009858FF /* Assets.xcassets in Resources */,
+				35E56ABD1F21428500635086 /* Events.db in Resources */,
 				35970D8A1F1F3929009858FF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -257,12 +291,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		187FAC5DF578373B2F3A61E0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cal/Pods-Cal-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3F74742F2D131B35D65E1781 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		ECB73F65AB48CE7BFA4C864C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cal/Pods-Cal-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		35970D7D1F1F3929009858FF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				35970D871F1F3929009858FF /* ViewController.swift in Sources */,
+				35E56AB91F20FEFB00635086 /* CalendarCell.swift in Sources */,
 				35970D851F1F3929009858FF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,6 +496,7 @@
 		};
 		35970DAA1F1F3929009858FF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E5AC0F38603E11983A966D30 /* Pods-Cal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = WGP7ZR3MEM;
@@ -426,6 +510,7 @@
 		};
 		35970DAB1F1F3929009858FF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D43D8DC816895AED0016A8FE /* Pods-Cal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = WGP7ZR3MEM;
@@ -514,6 +599,7 @@
 				35970DAB1F1F3929009858FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		35970DAC1F1F3929009858FF /* Build configuration list for PBXNativeTarget "CalTests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +608,7 @@
 				35970DAE1F1F3929009858FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		35970DAF1F1F3929009858FF /* Build configuration list for PBXNativeTarget "CalUITests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +617,7 @@
 				35970DB11F1F3929009858FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

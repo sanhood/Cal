@@ -1,0 +1,17 @@
+PODS:
+  - JTAppleCalendar (7.0.4)
+  - SQLite.swift (0.11.3):
+    - SQLite.swift/standard (= 0.11.3)
+  - SQLite.swift/standard (0.11.3)
+
+DEPENDENCIES:
+  - JTAppleCalendar (~> 7.0)
+  - SQLite.swift (~> 0.11.3)
+
+SPEC CHECKSUMS:
+  JTAppleCalendar: 6def48ecd0daae1d5baaa45e813124c2a20b184d
+  SQLite.swift: 99b36c22084427f0abbeb957556ce1528cf10bb3
+
+PODFILE CHECKSUM: 0bf23364f70d81f3f59f18e84b0866b4939ff106
+
+COCOAPODS: 1.2.1
