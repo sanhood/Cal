@@ -45,90 +45,22 @@ class ViewController: UIViewController , JTAppleCalendarViewDelegate , JTAppleCa
         formatterGrego.calendar = Calendar.current
         let bundlePath = Bundle.main.path(forResource: "Events", ofType: ".db")
         let db = try Connection(bundlePath!)
-        
         for item in try db.prepare(persianTable){
             if item[type] == 1 || item[type] == 3 {
                 DataBase.append(["month":item[month] , "day":item[day], "off":item[off] , "type":item[type],"event":item[event]!])
             }
         }
-        
-//        for item in try db.prepare(gregorianTable){
-//            
-//            DataBase.append(["month":item[month] , "day":item[day], "off":item[off] , "type":item[type],"event":item[event]!])
-//        }
-        
-//        for item in try db.prepare(islamicTable){
-//            
-//            DataBase.append(["month":item[month] , "day":item[day], "off":item[off] , "type":3,"event":item[event]!])
-//        }
-
-
+        for item in try db.prepare(gregorianTable){
+            
+            DataBase.append(["month":item[month] , "day":item[day], "off":item[off] , "type":Int64(2),"event":item[event]!])
+        }
     }
-//    func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
-////        let formatter = DateFormatter()
-////        formatter.dateFormat = "yyy MM dd"
-////        formatter.calendar = Calendar(identifier: .persian)
-//        
-////        formatter.timeZone = Calendar.current.timeZone
-////        formatter.locale = Calendar.current.locale
-//        let formatter = DateFormatter()
-//        let date = Date()
-//        formatter.calendar = Calendar(identifier: .persian)
-//        formatter.locale = Calendar.current.locale
-//        formatter.dateFormat = "dd MM yyyy"
-//        
-//       // print(formatter.string(from: date))
-//        let start = formatter.date(from: "01 11 1395")
-//        let end = formatter.date(from: "21 03 2030")
-//        print(start)
-//        let parameters = ConfigurationParameters(
-//        return parameters
-//    }
-    
-//    func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters{
-//        
-//            let calendar3 = Calendar(identifier: .persian)
-//        
-////                formatter.locale = Calendar.current.locale
-//        
-//            let formatter = DateFormatter()
-//            let date = Date()
-//            formatter.timeZone = TimeZone(identifier:"fa_IR")
-//            formatter.locale = NSLocale(localeIdentifier: "fa_IR") as Locale!
-//            formatter.dateFormat = "dd MM yyyy"
-//    
-//           // print(formatter.string(from: date))
-//            let start = formatter.date(from: "01 01 1396")!
-//            let end = formatter.date(from: "21 04 1400")!
-//       let parameters =  ConfigurationParameters(startDate: start, endDate: end, numberOfRows: nil, calendar: calendar3, generateInDates: nil, generateOutDates: nil, firstDayOfWeek: DaysOfWeek.saturday, hasStrictBoundaries: nil)
-//
-//            return parameters
-//        
-//    }
-
     
     
-//    func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
-//        
-//        formatter.dateFormat = "yyyy MM dd"
-//        formatter.timeZone = Calendar.current.timeZone
-//        formatter.locale = Calendar.current.locale
-//        
-//        
-//        let startDate = formatter.date(from: "2017 01 01")!
-//        let endDate = formatter.date(from: "2018 02 01")!
-//        
-//        let parameters = ConfigurationParameters(startDate: startDate,
-//                                                 endDate: endDate,
-//                                                 numberOfRows: nil,
-//                                                 calendar: nil,
-//                                                 generateInDates: nil,
-//                                                 generateOutDates: nil,
-//                                                 firstDayOfWeek: DaysOfWeek.saturday ,
-//                                                 hasStrictBoundaries: nil)
-//        return parameters
-//    }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        calendar.semanticContentAttribute = .forceRightToLeft
+    }
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
         var cal = Calendar(identifier: .persian)
       //  cal.timeZone = TimeZone(identifier: "fa_IR")!
@@ -155,20 +87,15 @@ class ViewController: UIViewController , JTAppleCalendarViewDelegate , JTAppleCa
 
     
     
+    
+    
     func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
         
         let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "Cell", for: indexPath) as! CalendarCell
         cell.Lbl.text = cellState.text
         cell.Lbl.textColor = UIColor.black
         
-        if cellState.dateBelongsTo == .thisMonth {
-            cell.Lbl.textColor = UIColor.black
-        }else {
-            cell.Lbl.textColor = UIColor.gray
-        }
-        if cellState.day == .friday {           //jome
-            cell.Lbl.textColor = UIColor.blue
-        }
+        
         
         let formatterY = DateFormatter()
         formatterY.calendar = Calendar(identifier: .persian)
@@ -182,88 +109,81 @@ class ViewController: UIViewController , JTAppleCalendarViewDelegate , JTAppleCa
         formatterD.calendar = Calendar(identifier: .islamicCivil)
 
         formatterD.dateFormat = "d"
-       // cell.Lbl.text = formatter2.string(from: date)
         
         
         let persianYear = Int(formatterY.string(from: date))!
         let persianMonth = Int(formatterM.string(from: date))!
         let persianDay = Int(cellState.text)!
-        let n:Int = persianYear - 1396
-        //let islamicMonth =
-//        let islamicDay = islamicFirstDay + Int(persianDay)! - 1
-//        let islamicMonth =
-        let const = -(10*n+((21*n)/24)+(n/4)-(n/6))
-        let Mconst = const/31
-        var Dconst = const - Mconst*31
+        let n:Int = persianYear-1396
+
+        var newDay = String(persianDay)
+        var newMonth = String(persianMonth)
         
+        if persianYear != 1396 {
+            let interval = ((((10*24)+21)*n)+((n/4)*24)+((1+n/6))*24)*60*60
+          
+            print(interval)
+            let newDate = date.addingTimeInterval(TimeInterval(interval))
+            let formatter1 = DateFormatter()
+            formatter1.calendar = Calendar(identifier: .persian)
+            formatter1.dateFormat = "M"
+            
+            let formatter2 = DateFormatter()
+            formatter2.calendar = Calendar(identifier: .persian)
+            formatter2.dateFormat = "d"
+            
+             newDay = formatter2.string(from: newDate)
+             newMonth = formatter1.string(from: newDate)
         
-//        print(const)
-//        print(islamicDay)
-        print(persianYear)
-        print(Mconst)
-        print(Dconst)
-        print("------")
-        
-//        formatterM.calendar = Calendar(identifier: .islamicCivil)
-//        let islamicMonth = formatterM.string(from: date)
-//        let islamicDay = formatterD.string(from: date)
+        }
+
         formatterM.calendar = Calendar.current
         formatterD.calendar = Calendar.current
 
         let gregorMonth = formatterM.string(from: date)
         let gregorDay = formatterD.string(from: date)
-//        print(cellState.text)
-//        print(islamicMonth)
-//        print(islamicDay)
-//        print("---------")
- 
-        var compareMonth = persianMonth-Mconst
-        if compareMonth == 0 {
-            compareMonth = 12
-        }
-        let compareDay = persianDay-Dconst
-        
+
         cell.Event.removeAll()
 
         for item in DataBase {
-            let month = String(describing: item["month"]!)
-            let day = String(describing: item["day"]!)
-           // print(month)
-//            print(day)
-//            print(persianDay+Dconst)
-//            print(persianMonth+Mconst)
-//            print("-----------")
-//            
-            if (item["type"] as! Int64 == 3) && Int(month) == compareMonth && Int(day) == compareDay {
+            let month = String(describing: (item["month"]!))
+            let day = String(describing: (item["day"]!))
+
+            if ((item["type"]) as! Int64 == 3) && month == newMonth && day == newDay{
                 cell.Lbl.textColor = UIColor.green
-                cell.Event.append(String(describing: item["event"]!))
+                cell.Event.append(String(describing: (item["event"])!))
+                if (item["off"] as! Int64) == 1{
+                    cell.Lbl.textColor = UIColor.cyan
+                }
             }
             
-//            print(month)
-//            print(day)
-//            print(cellState.text)
-//            print(persianMonth)
-//            print("-------------")
-//            if ((item["type"] as! Int)==1 && cellState.text == day && persianMonth == month) {
-//                cell.Lbl.textColor = UIColor.cyan
-//                cell.addEvent(event: String(describing: item["event"]!))
-//                if (item["off"] as! Int64) == 1{
-//                    cell.Lbl.textColor = UIColor.blue
-//                }
-//            }
-//            if ((item["type"] as! Int)==2 && gregorDay == day && gregorMonth == month){
-//                cell.Lbl.textColor = UIColor.green
-//            }
-//            if ((item["type"] as! Int)==3 && islamicDay == day && islamicMonth == month){
-//                cell.Lbl.textColor = UIColor.purple
-//                cell.addEvent(event: String(describing: item["event"]!))
-//            }
+            if ((item["type"]) as! Int64)==1 && cellState.text == day && String(persianMonth) == month{
+                cell.Lbl.textColor = UIColor.green
+                cell.Event.append(String(describing: item["event"]!))
+                if (item["off"] as! Int64) == 1{
+                    cell.Lbl.textColor = UIColor.cyan
+                }
+            }
+            if ((item["type"] as! Int64)==2 && gregorDay == day && gregorMonth == month){
+                cell.Lbl.textColor = UIColor.green
+                cell.Event.append(String(describing: item["event"]!))
+                if (item["off"] as! Int64) == 1{
+                    cell.Lbl.textColor = UIColor.cyan
+                }
+            }
             
         }
-        //print(cellState)
-        return cell
+        if cellState.day == .friday {
+            cell.Lbl.textColor = UIColor.blue
+        }
+        if cellState.dateBelongsTo != .thisMonth {
+            cell.Lbl.alpha = 0.45
+        }
         
+        
+        return cell
     }
+    
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         (cell as! CalendarCell).Lbl.text = "fuck"
         let calendar = Calendar.current
@@ -277,5 +197,6 @@ class ViewController: UIViewController , JTAppleCalendarViewDelegate , JTAppleCa
         print((cell as! CalendarCell).Event)
         
     }
+    
 }
 

@@ -11,7 +11,6 @@ import JTAppleCalendar
 class CalendarCell: JTAppleCell {
     @IBOutlet weak var Lbl : UILabel!
     var Event = [String]()
-    
 }
 
 
