@@ -24,11 +24,10 @@ class CalendarVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let nib = UINib(nibName: "CalendarCell", bundle: nil)
-        calendar.register(nib, forCellWithReuseIdentifier: "Cell")
-        calendar.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        calendar.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        
+        //let nib = UINib(nibName: "CalendarCell", bundle: nil)
+        //calendar.register(nib, forCellWithReuseIdentifier: "Cell")
+        calendar.minimumLineSpacing = 0
+        calendar.minimumInteritemSpacing = 0
         
         do {
             try sqlReading()
@@ -124,7 +123,7 @@ extension CalendarVC : JTAppleCalendarViewDelegate , JTAppleCalendarViewDataSour
     
     func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
         
-        if let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "Cell", for: indexPath) as? CalendarCell {
+        if let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "cell", for: indexPath) as? CalendarCell {
             cell.configure(cellState : cellState , date : date , events: events)
             
             

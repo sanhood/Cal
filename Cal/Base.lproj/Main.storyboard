@@ -22,10 +22,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XQF-8e-U2h" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
-                                <rect key="frame" x="0.0" y="188.5" width="375" height="290"/>
+                                <rect key="frame" x="0.0" y="233.5" width="375" height="200"/>
                                 <color key="backgroundColor" red="0.88908093310000003" green="0.33465405910000001" blue="0.33465405910000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="290" id="UJb-4O-J2r"/>
+                                    <constraint firstAttribute="height" constant="200" id="UJb-4O-J2r"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FC7-7p-Zbf">
                                     <size key="itemSize" width="120" height="120"/>
@@ -33,7 +33,31 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells/>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="1TS-rS-mEJ" customClass="CalendarCell" customModule="Cal" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="40" width="120" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K64-4Y-TD3">
+                                                    <rect key="frame" x="39" y="49" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="K64-4Y-TD3" firstAttribute="centerX" secondItem="1TS-rS-mEJ" secondAttribute="centerX" id="du4-iR-ggT"/>
+                                            <constraint firstItem="K64-4Y-TD3" firstAttribute="centerY" secondItem="1TS-rS-mEJ" secondAttribute="centerY" id="jac-TF-80N"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="Lbl" destination="K64-4Y-TD3" id="KnV-lb-Fnq"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
                                 <connections>
                                     <outlet property="ibCalendarDataSource" destination="BYZ-38-t0r" id="xzB-vC-V2A"/>
                                     <outlet property="ibCalendarDelegate" destination="BYZ-38-t0r" id="pRw-GN-91N"/>
@@ -50,7 +74,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="tnD-g3-Wtq">
-                                <rect key="frame" x="5" y="149.5" width="365" height="25"/>
+                                <rect key="frame" x="5" y="194.5" width="365" height="25"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="جمعه" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="me4-pH-OvD" customClass="DayLabel" customModule="Cal" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="52" height="20.5"/>

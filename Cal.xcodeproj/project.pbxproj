@@ -270,7 +270,7 @@
 				TargetAttributes = {
 					35970D801F1F3929009858FF = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = WGP7ZR3MEM;
+						DevelopmentTeam = 928ZGZ8C49;
 						ProvisioningStyle = Automatic;
 					};
 					35970D941F1F3929009858FF = {
@@ -547,8 +547,9 @@
 			baseConfigurationReference = E5AC0F38603E11983A966D30 /* Pods-Cal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = WGP7ZR3MEM;
+				DEVELOPMENT_TEAM = 928ZGZ8C49;
 				INFOPLIST_FILE = Cal/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = D.Chamani.Cal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -561,8 +562,9 @@
 			baseConfigurationReference = D43D8DC816895AED0016A8FE /* Pods-Cal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = WGP7ZR3MEM;
+				DEVELOPMENT_TEAM = 928ZGZ8C49;
 				INFOPLIST_FILE = Cal/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = D.Chamani.Cal;
 				PRODUCT_NAME = "$(TARGET_NAME)";

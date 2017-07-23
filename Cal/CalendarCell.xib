@@ -28,6 +28,11 @@
                 <constraint firstItem="6jt-dm-j6n" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="tu0-9S-yH8"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="layer.border.width">
+                    <integer key="value" value="5"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="Lbl" destination="6jt-dm-j6n" id="bxV-np-uqh"/>
             </connections>
