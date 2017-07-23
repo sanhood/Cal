@@ -16,13 +16,10 @@ class ViewController: UIViewController , JTAppleCalendarViewDelegate , JTAppleCa
     let persianTable = Table("Persian")
     let islamicTable = Table("Islamic")
     let gregorianTable = Table("Gregorian")
-    let month = Expression<Int64>("Month")
-    let day = Expression<Int64>("Day")
-    let off = Expression<Int64>("OFF")
-    let type = Expression<Int64>("Type")
-    let event = Expression<String?>("Event")
+    var events : [Event]! = []
+    
     let formatter = DateFormatter()
-    var DataBase = [[String:Any]]()
+    //var DataBase = [[String:Any]]()
     let islamicFirstDay = 21
     let islamicFirstMonth = 6
     override func viewDidLoad() {
@@ -47,12 +44,16 @@ class ViewController: UIViewController , JTAppleCalendarViewDelegate , JTAppleCa
         let db = try Connection(bundlePath!)
         for item in try db.prepare(persianTable){
             if item[type] == 1 || item[type] == 3 {
-                DataBase.append(["month":item[month] , "day":item[day], "off":item[off] , "type":item[type],"event":item[event]!])
+               // DataBase.append(["month":item[month] , "day":item[day], "off":item[off] , "type":item[type],"event":item[event]!])
+                print(item[event])
+                events.append(Event(day: Int(item[day]), month: Int(item[month]), type: Int(item[type]), isOff: Int(item[off]), desc : item[event]!))
+                
             }
         }
         for item in try db.prepare(gregorianTable){
             
-            DataBase.append(["month":item[month] , "day":item[day], "off":item[off] , "type":Int64(2),"event":item[event]!])
+           // DataBase.append(["month":item[month] , "day":item[day], "off":item[off] , "type":Int64(2),"event":item[event]!])
+           events.append(Event(day: Int(item[day]), month: Int(item[month]), type: 2, isOff: Int(item[off]), desc: item[event]!))
         }
     }
     
@@ -63,17 +64,12 @@ class ViewController: UIViewController , JTAppleCalendarViewDelegate , JTAppleCa
     }
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
         var cal = Calendar(identifier: .persian)
-      //  cal.timeZone = TimeZone(identifier: "fa_IR")!
         cal.locale = Locale(identifier: "fa_IR")
-        
         formatter.dateFormat = "yyyy MM dd"
         formatter.timeZone = cal.timeZone
         formatter.locale = cal.locale
-        
-        
         let startDate = formatter.date(from: "1395 01 01")!
         let endDate = formatter.date(from: "1410 02 01")!
-        
         let parameters = ConfigurationParameters(startDate: startDate,
                                                  endDate: endDate,
                                                  numberOfRows: 6,
@@ -92,7 +88,7 @@ class ViewController: UIViewController , JTAppleCalendarViewDelegate , JTAppleCa
     func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
         
         if let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "Cell", for: indexPath) as? CalendarCell {
-            cell.configure(cellState : cellState , date : date , DataBase: DataBase)
+            cell.configure(cellState : cellState , date : date , events: events)
             
             
             return cell;

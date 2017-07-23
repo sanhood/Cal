@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		08D82EEA1DDC75D55DB9D1F9 /* Pods_Cal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE248B677DD7408BF7CB1CCC /* Pods_Cal.framework */; };
+		34D49C7A1F24C0670003299A /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D49C791F24C0670003299A /* Event.swift */; };
+		34D49C7C1F24C3B90003299A /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D49C7B1F24C3B90003299A /* Globals.swift */; };
 		35970D851F1F3929009858FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35970D841F1F3929009858FF /* AppDelegate.swift */; };
 		35970D871F1F3929009858FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35970D861F1F3929009858FF /* ViewController.swift */; };
 		35970D8A1F1F3929009858FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35970D881F1F3929009858FF /* Main.storyboard */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		34D49C791F24C0670003299A /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		34D49C7B1F24C3B90003299A /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		35970D811F1F3929009858FF /* Cal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35970D841F1F3929009858FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35970D861F1F3929009858FF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +87,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		34D49C761F24C0190003299A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				35E56AB81F20FEFB00635086 /* CalendarCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		34D49C771F24C0220003299A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				34D49C791F24C0670003299A /* Event.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		34D49C781F24C02A0003299A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				35970D861F1F3929009858FF /* ViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		34D49C7D1F24C3C00003299A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				34D49C7B1F24C3B90003299A /* Globals.swift */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		35970D781F1F3929009858FF = {
 			isa = PBXGroup;
 			children = (
@@ -108,13 +144,15 @@
 		35970D831F1F3929009858FF /* Cal */ = {
 			isa = PBXGroup;
 			children = (
+				34D49C7D1F24C3C00003299A /* Resources */,
+				34D49C781F24C02A0003299A /* Controller */,
+				34D49C771F24C0220003299A /* Model */,
+				34D49C761F24C0190003299A /* View */,
 				35970D841F1F3929009858FF /* AppDelegate.swift */,
-				35970D861F1F3929009858FF /* ViewController.swift */,
 				35970D881F1F3929009858FF /* Main.storyboard */,
 				35970D8B1F1F3929009858FF /* Assets.xcassets */,
 				35970D8D1F1F3929009858FF /* LaunchScreen.storyboard */,
 				35970D901F1F3929009858FF /* Info.plist */,
-				35E56AB81F20FEFB00635086 /* CalendarCell.swift */,
 				35E56ABC1F21428500635086 /* Events.db */,
 			);
 			path = Cal;
@@ -344,8 +382,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34D49C7A1F24C0670003299A /* Event.swift in Sources */,
 				35970D871F1F3929009858FF /* ViewController.swift in Sources */,
 				35E56AB91F20FEFB00635086 /* CalendarCell.swift in Sources */,
+				34D49C7C1F24C3B90003299A /* Globals.swift in Sources */,
 				35970D851F1F3929009858FF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

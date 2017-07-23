@@ -12,7 +12,7 @@ class CalendarCell: JTAppleCell {
     @IBOutlet weak var Lbl : UILabel!
     var Event = [String]()
     
-    func configure(cellState : CellState , date : Date , DataBase : [[String : Any]]) {
+    func configure(cellState : CellState , date : Date , events : [Event]) {
         self.Lbl.text = cellState.text
         self.Lbl.textColor = UIColor.black
         self.Lbl.alpha = 1
@@ -69,29 +69,29 @@ class CalendarCell: JTAppleCell {
         
         self.Event.removeAll()
         
-        for item in DataBase {
-            let month = String(describing: (item["month"]!))
-            let day = String(describing: (item["day"]!))
+        for event in events {
+            let month = String(event.month)
+            let day = String(event.day)
             
-            if ((item["type"]) as! Int64 == 3) && month == newMonth && day == newDay{
+            if event.type == .islamic && month == newMonth && day == newDay{
                 self.Lbl.textColor = UIColor.green
-                self.Event.append(String(describing: (item["event"])!))
-                if (item["off"] as! Int64) == 1{
+                self.Event.append(String(event.desc))
+                if event.isOff {
                     self.Lbl.textColor = UIColor.cyan
                 }
             }
             
-            if ((item["type"]) as! Int64)==1 && cellState.text == day && String(persianMonth) == month{
+            if event.type == .persian && cellState.text == day && String(persianMonth) == month{
                 self.Lbl.textColor = UIColor.green
-                self.Event.append(String(describing: item["event"]!))
-                if (item["off"] as! Int64) == 1{
+                self.Event.append(String(event.desc))
+                if event.isOff {
                     self.Lbl.textColor = UIColor.cyan
                 }
             }
-            if ((item["type"] as! Int64)==2 && gregorDay == day && gregorMonth == month){
+            if event.type == .gregorian && gregorDay == day && gregorMonth == month {
                 self.Lbl.textColor = UIColor.green
-                self.Event.append(String(describing: item["event"]!))
-                if (item["off"] as! Int64) == 1{
+                self.Event.append(String(event.desc))
+                if event.isOff {
                     self.Lbl.textColor = UIColor.cyan
                 }
             }
