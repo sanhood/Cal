@@ -14,6 +14,7 @@ class CalendarCell: JTAppleCell {
     
     func configure(cellState : CellState , date : Date , events : [Event]) {
         self.Lbl.text = cellState.text
+        self.frame.size = CGSize(width: 40, height: 40)
         self.Lbl.textColor = UIColor.black
         self.Lbl.alpha = 1
         let formatterY = DateFormatter()

@@ -9,33 +9,60 @@
 import UIKit
 import JTAppleCalendar
 import SQLite
-class ViewController: UIViewController , JTAppleCalendarViewDelegate , JTAppleCalendarViewDataSource{
+class CalendarVC: UIViewController {
 
     @IBOutlet weak var calendar: JTAppleCalendarView!
     @IBOutlet weak var Month: UILabel!
+    @IBOutlet var Days : [DayLabel]!
+    
     let persianTable = Table("Persian")
     let islamicTable = Table("Islamic")
     let gregorianTable = Table("Gregorian")
     var events : [Event]! = []
-    
     let formatter = DateFormatter()
-    //var DataBase = [[String:Any]]()
-    let islamicFirstDay = 21
-    let islamicFirstMonth = 6
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let nib = UINib(nibName: "CalendarCell", bundle: nil)
+        calendar.register(nib, forCellWithReuseIdentifier: "Cell")
+        calendar.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        calendar.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
+        
         do {
             try sqlReading()
         }catch{}
-        // Do any additional setup after loading the view, typically from a nib.
+    
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
+    
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        calendar.semanticContentAttribute = .forceRightToLeft
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     func sqlReading() throws{
+        let month = Expression<Int64>("Month")
+        let day = Expression<Int64>("Day")
+        let off = Expression<Int64>("OFF")
+        let type = Expression<Int64>("Type")
+        let event = Expression<String?>("Event")
         let formatterIslamic = DateFormatter()
         let formatterGrego = DateFormatter()
         formatterIslamic.calendar = Calendar(identifier: .islamicCivil)
@@ -44,24 +71,24 @@ class ViewController: UIViewController , JTAppleCalendarViewDelegate , JTAppleCa
         let db = try Connection(bundlePath!)
         for item in try db.prepare(persianTable){
             if item[type] == 1 || item[type] == 3 {
-               // DataBase.append(["month":item[month] , "day":item[day], "off":item[off] , "type":item[type],"event":item[event]!])
-                print(item[event])
                 events.append(Event(day: Int(item[day]), month: Int(item[month]), type: Int(item[type]), isOff: Int(item[off]), desc : item[event]!))
                 
             }
         }
         for item in try db.prepare(gregorianTable){
             
-           // DataBase.append(["month":item[month] , "day":item[day], "off":item[off] , "type":Int64(2),"event":item[event]!])
-           events.append(Event(day: Int(item[day]), month: Int(item[month]), type: 2, isOff: Int(item[off]), desc: item[event]!))
+            events.append(Event(day: Int(item[day]), month: Int(item[month]), type: 2, isOff: Int(item[off]), desc: item[event]!))
         }
     }
+
+    
+    
+}
+
+extension CalendarVC : JTAppleCalendarViewDelegate , JTAppleCalendarViewDataSource  {
     
     
     
-    override func viewWillAppear(_ animated: Bool) {
-        calendar.semanticContentAttribute = .forceRightToLeft
-    }
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
         var cal = Calendar(identifier: .persian)
         cal.locale = Locale(identifier: "fa_IR")
@@ -80,23 +107,6 @@ class ViewController: UIViewController , JTAppleCalendarViewDelegate , JTAppleCa
                                                  hasStrictBoundaries: nil)
         return parameters
     }
-
-    
-    
-    
-    
-    func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
-        
-        if let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "Cell", for: indexPath) as? CalendarCell {
-            cell.configure(cellState : cellState , date : date , events: events)
-            
-            
-            return cell;
-            
-            
-        }
-        return CalendarCell()
-            }
     
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         (cell as! CalendarCell).Lbl.text = "fuck"
@@ -112,5 +122,21 @@ class ViewController: UIViewController , JTAppleCalendarViewDelegate , JTAppleCa
         
     }
     
+    func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
+        
+        if let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "Cell", for: indexPath) as? CalendarCell {
+            cell.configure(cellState : cellState , date : date , events: events)
+            
+            
+            return cell;
+            
+            
+        }
+        return CalendarCell()
+    }
+    
+
 }
+
+
 

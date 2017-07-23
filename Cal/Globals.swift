@@ -16,8 +16,5 @@ enum EventType {
     case gregorian
 }
 
-let month = Expression<Int64>("Month")
-let day = Expression<Int64>("Day")
-let off = Expression<Int64>("OFF")
-let type = Expression<Int64>("Type")
-let event = Expression<String?>("Event")
+
+
