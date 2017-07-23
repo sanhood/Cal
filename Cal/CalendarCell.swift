@@ -33,14 +33,19 @@ class CalendarCell: JTAppleCell {
         let persianYear = Int(formatterY.string(from: date))!
         let persianMonth = Int(formatterM.string(from: date))!
         let persianDay = Int(cellState.text)!
-        let n:Int = persianYear-1396
+        var n:Int = persianYear-1396
         
         var newDay = String(persianDay)
         var newMonth = String(persianMonth)
         
         if persianYear != 1396 {
-            let interval = ((((10*24)+21)*n)+((n/4)*24)+((1+n/6))*24)*60*60
-            
+            var interval = 0
+            if n>0{
+                interval = ((((10*24)+21)*n)+((n/4)*24)+((1+n/6))*24)*60*60
+            }else{
+                n *= -1
+                interval = -1*((((10*24)+21)*n)+((n/4)*24)+((1+n/6))*24)*60*60
+            }
             print(interval)
             let newDate = date.addingTimeInterval(TimeInterval(interval))
             let formatter1 = DateFormatter()
