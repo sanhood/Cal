@@ -161,10 +161,10 @@ extension CalendarVC : JTAppleCalendarViewDelegate , JTAppleCalendarViewDataSour
         }
         
         print("selected")
-
+        selectedCell.selectOrDeselectMe()
         
         //selectedCell.HighlightedView.isHidden = false
-        selectedCell.selectOrDeselectMe()
+       
         
         
     }
