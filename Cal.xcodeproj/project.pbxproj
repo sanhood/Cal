@@ -12,6 +12,8 @@
 		34D49C7C1F24C3B90003299A /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D49C7B1F24C3B90003299A /* Globals.swift */; };
 		34D49C7F1F24D0D00003299A /* DayLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D49C7E1F24D0D00003299A /* DayLabel.swift */; };
 		34D49D231F25C35A0003299A /* X Arshia.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 34D49D221F25C35A0003299A /* X Arshia.ttf */; };
+		34D49D251F261A8D0003299A /* HighlightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D49D241F261A8D0003299A /* HighlightView.swift */; };
+		34D49D271F262A3E0003299A /* B Nazanin+ Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 34D49D261F262A3E0003299A /* B Nazanin+ Regular.ttf */; };
 		35970D851F1F3929009858FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35970D841F1F3929009858FF /* AppDelegate.swift */; };
 		35970D871F1F3929009858FF /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35970D861F1F3929009858FF /* CalendarVC.swift */; };
 		35970D8A1F1F3929009858FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35970D881F1F3929009858FF /* Main.storyboard */; };
@@ -45,6 +47,8 @@
 		34D49C7B1F24C3B90003299A /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		34D49C7E1F24D0D00003299A /* DayLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayLabel.swift; sourceTree = "<group>"; };
 		34D49D221F25C35A0003299A /* X Arshia.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "X Arshia.ttf"; sourceTree = "<group>"; };
+		34D49D241F261A8D0003299A /* HighlightView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighlightView.swift; sourceTree = "<group>"; };
+		34D49D261F262A3E0003299A /* B Nazanin+ Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "B Nazanin+ Regular.ttf"; sourceTree = "<group>"; };
 		35970D811F1F3929009858FF /* Cal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35970D841F1F3929009858FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35970D861F1F3929009858FF /* CalendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarVC.swift; sourceTree = "<group>"; };
@@ -96,6 +100,7 @@
 			children = (
 				35E56AB81F20FEFB00635086 /* CalendarCell.swift */,
 				34D49C7E1F24D0D00003299A /* DayLabel.swift */,
+				34D49D241F261A8D0003299A /* HighlightView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -158,6 +163,7 @@
 				35970D8B1F1F3929009858FF /* Assets.xcassets */,
 				35970D8D1F1F3929009858FF /* LaunchScreen.storyboard */,
 				34D49D221F25C35A0003299A /* X Arshia.ttf */,
+				34D49D261F262A3E0003299A /* B Nazanin+ Regular.ttf */,
 				35970D901F1F3929009858FF /* Info.plist */,
 				35E56ABC1F21428500635086 /* Events.db */,
 			);
@@ -314,6 +320,7 @@
 			files = (
 				35970D8F1F1F3929009858FF /* LaunchScreen.storyboard in Resources */,
 				35970D8C1F1F3929009858FF /* Assets.xcassets in Resources */,
+				34D49D271F262A3E0003299A /* B Nazanin+ Regular.ttf in Resources */,
 				34D49D231F25C35A0003299A /* X Arshia.ttf in Resources */,
 				35E56ABD1F21428500635086 /* Events.db in Resources */,
 				35970D8A1F1F3929009858FF /* Main.storyboard in Resources */,
@@ -394,6 +401,7 @@
 				35E56AB91F20FEFB00635086 /* CalendarCell.swift in Sources */,
 				34D49C7C1F24C3B90003299A /* Globals.swift in Sources */,
 				34D49C7F1F24D0D00003299A /* DayLabel.swift in Sources */,
+				34D49D251F261A8D0003299A /* HighlightView.swift in Sources */,
 				35970D851F1F3929009858FF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

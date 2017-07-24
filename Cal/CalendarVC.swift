@@ -18,6 +18,8 @@ class CalendarVC: UIViewController  {
     @IBOutlet weak var inputYear: UITextField!
     @IBOutlet weak var inputMonth: UITextField!
     @IBOutlet weak var inputDay: UITextField!
+    @IBOutlet weak var perGreSegment: UISegmentedControl!
+
 
     
     let persianTable = Table("Persian")
@@ -29,15 +31,20 @@ class CalendarVC: UIViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //let nib = UINib(nibName: "CalendarCell", bundle: nil)
-        //calendar.register(nib, forCellWithReuseIdentifier: "Cell")
+        
         calendar.minimumLineSpacing = 0
         calendar.minimumInteritemSpacing = 0
+        calendar.layer.shadowColor = UIColor.purple.cgColor
+        calendar.layer.shadowRadius = 5
+        calendar.layer.shadowOpacity = 0.3
+        calendar.clipsToBounds = false
+       // calendar.layer.masksToBounds = false
+        //calendar.layer.shadowOffset = CGSize(width: 10, height: 10)
         
         do {
             try sqlReading()
         }catch{}
-    
+        
         
         
         
@@ -87,24 +94,65 @@ class CalendarVC: UIViewController  {
     
     
     @IBAction func goTo(_ sender: Any) {
-        
+        if perGreSegment.selectedSegmentIndex == 1 {
         let date = Date()
         let cal = Calendar(identifier: .persian)
         var dateComponents = cal.dateComponents([.day,.month,.year], from:date)
         dateComponents.day = Int(inputDay.text!)
         dateComponents.month = Int(inputMonth.text!)
         dateComponents.year = Int(inputYear.text!)
+            if !dateComponents.isValidDate {
+//                notValidDateAlert()
+//                return
+                print("not valid")
+            }
         let gotoDate = cal.date(from: dateComponents)
         calendar.scrollToDate(gotoDate!)
-        calendar.selectDates([gotoDate!])
+            calendar.selectDates([gotoDate!])}
+        else {
+            let date = Date()
+            let cal = Calendar(identifier: .gregorian)
+            var dateComponents = cal.dateComponents([.day,.month,.year], from:date)
+            dateComponents.day = Int(inputDay.text!)
+            dateComponents.month = Int(inputMonth.text!)
+            dateComponents.year = Int(inputYear.text!)
+            if !dateComponents.isValidDate {
+//                notValidDateAlert()
+//                return
+                print("not valid")
+            }
+            let gotoDate = cal.date(from: dateComponents)
+            calendar.scrollToDate(gotoDate!)
+            calendar.selectDates([gotoDate!])
+        }
         
         view.endEditing(true)
     }
-
+    
+    
+    func notValidDateAlert () {
+        let alert = UIAlertController(title: "خطا", message: "تاریخ وارد شده صحیح نیست", preferredStyle: .alert)
+        let action = UIAlertAction(title: "باشه", style: .default, handler: {
+            void in
+            self.view.endEditing(true)
+        })
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
+   
 
     
     
 }
+
+
+
+
+
+
+
 
 
 
