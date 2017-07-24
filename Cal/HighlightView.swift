@@ -16,12 +16,12 @@ class HighlightView: UIView , CAAnimationDelegate{
         let smallAnimation = CABasicAnimation(keyPath: "cornerRadius")
         smallAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         smallAnimation.fromValue = NSNumber(floatLiteral: 40 )
-        smallAnimation.toValue = NSNumber(floatLiteral: 20)
+        smallAnimation.toValue = NSNumber(floatLiteral: 10)
         smallAnimation.duration = 0.3
         self.layer.add(smallAnimation, forKey: "cornerRadius")
         
         
-        self.layer.cornerRadius = 20
+        self.layer.cornerRadius = 10
 
     }
     

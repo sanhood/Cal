@@ -18,7 +18,7 @@ class CalendarCell: JTAppleCell {
         self.selectOrDeselectMe()
         self.configureBeauties()
         self.Lbl.text = cellState.text
-       // self.Lbl.textColor = UIColor.black
+        self.Lbl.textColor = UIColor.black
         self.eventView.isHidden = true
         self.Lbl.alpha = 1
         let formatterY = DateFormatter()
@@ -118,7 +118,7 @@ class CalendarCell: JTAppleCell {
         self.layer.cornerRadius = 5
         self.layer.borderColor = UIColor(colorLiteralRed: 128 / 256, green: 0, blue: 128/256, alpha: 0.8).cgColor
         //  self.frame.size = CGSize(width: 40, height: 40)
-        self.bounds.size = CGSize(width: 50, height: 50)
+        self.bounds.size = CGSize(width: 40, height: 40)
 
     }
     
