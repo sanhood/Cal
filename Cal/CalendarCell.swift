@@ -10,11 +10,14 @@ import UIKit
 import JTAppleCalendar
 class CalendarCell: JTAppleCell {
     @IBOutlet weak var Lbl : UILabel!
+    @IBOutlet weak var HighlightedView : UIView!
     var Event = [String]()
     
     func configure(cellState : CellState , date : Date , events : [Event]) {
+        self.HighlightedView.isHidden = true
         self.layer.borderWidth = 2
-        self.frame.size = CGSize(width: 40, height: 40)
+      //  self.frame.size = CGSize(width: 40, height: 40)
+        self.bounds.size = CGSize(width: 50, height: 50)
         self.Lbl.text = cellState.text
        // self.frame.size = CGSize(width: 40, height: 40)
         self.Lbl.textColor = UIColor.black
@@ -49,7 +52,7 @@ class CalendarCell: JTAppleCell {
                 n *= -1
                 interval = -1*((((10*24)+21)*n)+((n/4)*24)+((1+n/6))*24)*60*60
             }
-            print(interval)
+            //print(interval)
             let newDate = date.addingTimeInterval(TimeInterval(interval))
             let formatter1 = DateFormatter()
             formatter1.calendar = Calendar(identifier: .persian)
@@ -108,6 +111,17 @@ class CalendarCell: JTAppleCell {
         }
         
     }
+    
+    
+    func selectOrDeselectMe () {
+        print("selectdeselect")
+        if self.HighlightedView.isHidden {
+            self.HighlightedView.isHidden = false }
+        else {
+            self.HighlightedView.isHidden = true
+        }
+    }
+    
 }
 
 

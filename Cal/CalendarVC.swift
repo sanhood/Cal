@@ -9,11 +9,16 @@
 import UIKit
 import JTAppleCalendar
 import SQLite
-class CalendarVC: UIViewController {
+class CalendarVC: UIViewController  {
 
     @IBOutlet weak var calendar: JTAppleCalendarView!
-    @IBOutlet weak var Month: UILabel!
+    @IBOutlet weak var MonthYear: UILabel!
     @IBOutlet var Days : [DayLabel]!
+    @IBOutlet weak var eventLbl: UILabel!
+    @IBOutlet weak var inputYear: UITextField!
+    @IBOutlet weak var inputMonth: UITextField!
+    @IBOutlet weak var inputDay: UITextField!
+
     
     let persianTable = Table("Persian")
     let islamicTable = Table("Islamic")
@@ -79,10 +84,32 @@ class CalendarVC: UIViewController {
             events.append(Event(day: Int(item[day]), month: Int(item[month]), type: 2, isOff: Int(item[off]), desc: item[event]!))
         }
     }
+    
+    
+    @IBAction func goTo(_ sender: Any) {
+        
+        let date = Date()
+        let cal = Calendar(identifier: .persian)
+        var dateComponents = cal.dateComponents([.day,.month,.year], from:date)
+        dateComponents.day = Int(inputDay.text!)
+        dateComponents.month = Int(inputMonth.text!)
+        dateComponents.year = Int(inputYear.text!)
+        let gotoDate = cal.date(from: dateComponents)
+        calendar.scrollToDate(gotoDate!)
+        calendar.selectDates([gotoDate!])
+        
+        view.endEditing(true)
+    }
+
 
     
     
 }
+
+
+
+
+
 
 extension CalendarVC : JTAppleCalendarViewDelegate , JTAppleCalendarViewDataSource  {
     
@@ -108,16 +135,37 @@ extension CalendarVC : JTAppleCalendarViewDelegate , JTAppleCalendarViewDataSour
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
-        (cell as! CalendarCell).Lbl.text = "fuck"
-        let calendar = Calendar.current
-        let year = calendar.component(.year, from: date)
-        let month = calendar.component(.month, from: date)
-        let day = calendar.component(.day, from: date)
-        print("day:  \(day)")
-        print("month:  \(month)")
-        print("text:  \(Int(cellState.text)!)")
-        print("year:   \(year)")
-        print((cell as! CalendarCell).Event)
+//        (cell as! CalendarCell).Lbl.text = "fuck"
+//        let calendar = Calendar.current
+//        let year = calendar.component(.year, from: date)
+//        let month = calendar.component(.month, from: date)
+//        let day = calendar.component(.day, from: date)
+//        print("day:  \(day)")
+//        print("month:  \(month)")
+//        print("text:  \(Int(cellState.text)!)")
+//        print("year:   \(year)")
+//        print((cell as! CalendarCell).Event)
+        
+       
+        
+        guard let selectedCell = cell as? CalendarCell else {return}
+        
+        if selectedCell.Event.count > 0 {
+            eventLbl.text = ""
+            for event in selectedCell.Event {
+                eventLbl.text = eventLbl.text! + "\(event)\n"
+            }
+        }
+        else {
+            eventLbl.text = ""
+        }
+        
+        print("selected")
+
+        
+        //selectedCell.HighlightedView.isHidden = false
+        selectedCell.selectOrDeselectMe()
+        
         
     }
     
@@ -134,6 +182,24 @@ extension CalendarVC : JTAppleCalendarViewDelegate , JTAppleCalendarViewDataSour
         return CalendarCell()
     }
     
+    
+    func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
+        let date = visibleDates.monthDates.first?.date
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .persian)
+        formatter.dateFormat = "yyyy"
+        let year = formatter.string(from: date!)
+        formatter.dateFormat = "MMMM"
+        let month = formatter.string(from: date!)
+        MonthYear.text = year + "-" + month
+    }
+    
+    
+    func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
+        guard let myCell = cell as? CalendarCell else {return}
+        
+        myCell.selectOrDeselectMe()
+    }
 
 }
 

@@ -11,7 +11,7 @@
 		34D49C7A1F24C0670003299A /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D49C791F24C0670003299A /* Event.swift */; };
 		34D49C7C1F24C3B90003299A /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D49C7B1F24C3B90003299A /* Globals.swift */; };
 		34D49C7F1F24D0D00003299A /* DayLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D49C7E1F24D0D00003299A /* DayLabel.swift */; };
-		34D49C851F24D69E0003299A /* CalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34D49C841F24D69E0003299A /* CalendarCell.xib */; };
+		34D49D231F25C35A0003299A /* X Arshia.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 34D49D221F25C35A0003299A /* X Arshia.ttf */; };
 		35970D851F1F3929009858FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35970D841F1F3929009858FF /* AppDelegate.swift */; };
 		35970D871F1F3929009858FF /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35970D861F1F3929009858FF /* CalendarVC.swift */; };
 		35970D8A1F1F3929009858FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35970D881F1F3929009858FF /* Main.storyboard */; };
@@ -44,7 +44,7 @@
 		34D49C791F24C0670003299A /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		34D49C7B1F24C3B90003299A /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		34D49C7E1F24D0D00003299A /* DayLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayLabel.swift; sourceTree = "<group>"; };
-		34D49C841F24D69E0003299A /* CalendarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarCell.xib; sourceTree = "<group>"; };
+		34D49D221F25C35A0003299A /* X Arshia.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "X Arshia.ttf"; sourceTree = "<group>"; };
 		35970D811F1F3929009858FF /* Cal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35970D841F1F3929009858FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35970D861F1F3929009858FF /* CalendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarVC.swift; sourceTree = "<group>"; };
@@ -96,7 +96,6 @@
 			children = (
 				35E56AB81F20FEFB00635086 /* CalendarCell.swift */,
 				34D49C7E1F24D0D00003299A /* DayLabel.swift */,
-				34D49C841F24D69E0003299A /* CalendarCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -158,6 +157,7 @@
 				35970D881F1F3929009858FF /* Main.storyboard */,
 				35970D8B1F1F3929009858FF /* Assets.xcassets */,
 				35970D8D1F1F3929009858FF /* LaunchScreen.storyboard */,
+				34D49D221F25C35A0003299A /* X Arshia.ttf */,
 				35970D901F1F3929009858FF /* Info.plist */,
 				35E56ABC1F21428500635086 /* Events.db */,
 			);
@@ -314,9 +314,9 @@
 			files = (
 				35970D8F1F1F3929009858FF /* LaunchScreen.storyboard in Resources */,
 				35970D8C1F1F3929009858FF /* Assets.xcassets in Resources */,
+				34D49D231F25C35A0003299A /* X Arshia.ttf in Resources */,
 				35E56ABD1F21428500635086 /* Events.db in Resources */,
 				35970D8A1F1F3929009858FF /* Main.storyboard in Resources */,
-				34D49C851F24D69E0003299A /* CalendarCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
