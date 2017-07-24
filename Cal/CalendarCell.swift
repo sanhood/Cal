@@ -78,7 +78,6 @@ class CalendarCell: JTAppleCell {
             let day = String(event.day)
             
             if event.type == .islamic && month == newMonth && day == newDay{
-                //self.Lbl.textColor = UIColor.green
                 eventView.isHidden = false
                 self.Event.append(String(event.desc))
                 if event.isOff {
@@ -87,7 +86,6 @@ class CalendarCell: JTAppleCell {
             }
             
             if event.type == .persian && cellState.text == day && String(persianMonth) == month{
-                //self.Lbl.textColor = UIColor.green
                 eventView.isHidden = false
                 self.Event.append(String(event.desc))
                 if event.isOff {
@@ -95,7 +93,6 @@ class CalendarCell: JTAppleCell {
                 }
             }
             if event.type == .gregorian && gregorDay == day && gregorMonth == month {
-                //self.Lbl.textColor = UIColor.green
                 eventView.isHidden = false
                 self.Event.append(String(event.desc))
                 if event.isOff {
@@ -117,7 +114,6 @@ class CalendarCell: JTAppleCell {
         self.layer.borderWidth = 1
         self.layer.cornerRadius = 5
         self.layer.borderColor = UIColor(colorLiteralRed: 128 / 256, green: 0, blue: 128/256, alpha: 0.8).cgColor
-        //  self.frame.size = CGSize(width: 40, height: 40)
         self.bounds.size = CGSize(width: 40, height: 40)
 
     }

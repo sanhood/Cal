@@ -59,14 +59,9 @@ class CalendarVC: UIViewController  {
     
     override func viewWillAppear(_ animated: Bool) {
         calendar.semanticContentAttribute = .forceRightToLeft
+        let date = Date()
+        calendar.scrollToDate(date)
     }
-    
-    
-    
-    
-    
-    
-    
     
     func sqlReading() throws{
         let month = Expression<Int64>("Month")
@@ -139,29 +134,12 @@ class CalendarVC: UIViewController  {
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
     }
-    
-    
-   
-
-    
-    
 }
 
 
 
 
-
-
-
-
-
-
-
-
-
 extension CalendarVC : JTAppleCalendarViewDelegate , JTAppleCalendarViewDataSource  {
-    
-    
     
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
         var cal = Calendar(identifier: .persian)
@@ -183,21 +161,7 @@ extension CalendarVC : JTAppleCalendarViewDelegate , JTAppleCalendarViewDataSour
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
-//        (cell as! CalendarCell).Lbl.text = "fuck"
-//        let calendar = Calendar.current
-//        let year = calendar.component(.year, from: date)
-//        let month = calendar.component(.month, from: date)
-//        let day = calendar.component(.day, from: date)
-//        print("day:  \(day)")
-//        print("month:  \(month)")
-//        print("text:  \(Int(cellState.text)!)")
-//        print("year:   \(year)")
-//        print((cell as! CalendarCell).Event)
-        
-       
-        
         guard let selectedCell = cell as? CalendarCell else {return}
-        
         if selectedCell.Event.count > 0 {
             eventLbl.text = ""
             for event in selectedCell.Event {
@@ -207,25 +171,14 @@ extension CalendarVC : JTAppleCalendarViewDelegate , JTAppleCalendarViewDataSour
         else {
             eventLbl.text = ""
         }
-        
-        print("selected")
         selectedCell.selectOrDeselectMe()
-        
-        //selectedCell.HighlightedView.isHidden = false
-       
-        
-        
     }
     
     func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
         
         if let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "cell", for: indexPath) as? CalendarCell {
             cell.configure(cellState : cellState , date : date , events: events)
-            
-            
             return cell;
-            
-            
         }
         return CalendarCell()
     }
